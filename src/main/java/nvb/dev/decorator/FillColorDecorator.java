@@ -16,6 +16,7 @@ public class FillColorDecorator extends ShapeDecorator {
         System.out.println("Fill color : " + color);
     }
 
+    // no change in the functionality
     @Override
     public void resize() {
         decoratedShape.resize();
@@ -26,6 +27,7 @@ public class FillColorDecorator extends ShapeDecorator {
         return decoratedShape.description() + " filled with " + color + " color.";
     }
 
+    // no change in the functionality
     @Override
     public boolean isHidden() {
         return decoratedShape.isHidden();
