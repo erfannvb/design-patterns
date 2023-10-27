@@ -4,7 +4,7 @@ import nvb.dev.singleton.lazy.LazySingleton;
 
 import java.lang.reflect.Constructor;
 
-public class ReflectionSingleton {
+public class ReflectionTest {
     public static void main(String[] args) {
 
         LazySingleton obj1 = LazySingleton.getInstance();
