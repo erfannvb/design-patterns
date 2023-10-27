@@ -1,6 +1,9 @@
 package nvb.dev.singleton.lazy;
 
-public class LazySingleton {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class LazySingleton implements Serializable {
 
     // Lazy Initialization Method
 
@@ -16,6 +19,11 @@ public class LazySingleton {
                 instance = new LazySingleton();
             }
         }
+        return instance;
+    }
+
+    @Serial
+    protected Object readResolve() {
         return instance;
     }
 
