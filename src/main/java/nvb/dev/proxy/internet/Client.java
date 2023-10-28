@@ -1,4 +1,4 @@
-package nvb.dev.proxy;
+package nvb.dev.proxy.internet;
 
 public class Client {
     public static void main(String[] args) {

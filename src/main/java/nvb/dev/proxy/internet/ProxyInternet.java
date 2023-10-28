@@ -1,4 +1,4 @@
-package nvb.dev.proxy;
+package nvb.dev.proxy.internet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +17,8 @@ public class ProxyInternet implements Internet {
     }
 
     @Override
-    public void connectTo(String serverHost) throws Exception {
-        if (bannedSites.contains(serverHost.toLowerCase())) throw new Exception("Access Denied!");
+    public void connectTo(String serverHost) {
+        if (bannedSites.contains(serverHost.toLowerCase())) System.out.println("Access Denied!");
         internet.connectTo(serverHost);
     }
 }
