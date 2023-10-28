@@ -1,8 +1,10 @@
 package nvb.dev.proxy.employee;
 
+import java.util.List;
+
 public interface Office {
 
-    void register();
+    List<Employee> addEmployee(Employee newEmployee);
 
     String getFirstName();
 

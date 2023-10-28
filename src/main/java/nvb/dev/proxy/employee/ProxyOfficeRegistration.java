@@ -1,8 +1,12 @@
 package nvb.dev.proxy.employee;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProxyOfficeRegistration implements Office {
 
     private final Employee employee;
+    List<Employee> employeeList = new ArrayList<>();
 
     private OfficeRegistration officeRegistration;
 
@@ -11,13 +15,14 @@ public class ProxyOfficeRegistration implements Office {
     }
 
     @Override
-    public void register() {
+    public List<Employee> addEmployee(Employee newEmployee) {
         if (validate()) {
             officeRegistration = new OfficeRegistration(employee);
-            officeRegistration.register();
+            employeeList = officeRegistration.addEmployee(employee);
         } else {
             System.out.println("This employee does not have the required qualifications to get hired.");
         }
+        return employeeList;
     }
 
     @Override
@@ -34,7 +39,7 @@ public class ProxyOfficeRegistration implements Office {
 
     @Override
     public void showInfo() {
-        if (validate()) {
+        if (validate() && !employeeList.isEmpty()) {
             officeRegistration.showInfo();
         } else {
             System.out.println("No Employees Found!");

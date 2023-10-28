@@ -1,6 +1,7 @@
 package nvb.dev.proxy.employee;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class EmployeeTest {
 
@@ -20,11 +21,17 @@ public class EmployeeTest {
                 .build();
 
         Office office = new ProxyOfficeRegistration(employee);
-        office.register();
+        List<Employee> employeeList = office.addEmployee(employee);
+
+        System.out.println(employeeList);
 
         System.out.println("--------------");
-        System.out.println("Name : " + office.getFirstName());
-        System.out.println("Department : " + office.getDepartment());
+        try {
+            System.out.println("Name : " + employeeList.get(0).getFirstName());
+            System.out.println("Department : " + employeeList.get(0).getDepartment());
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Employee list is empty.");
+        }
 
         System.out.println("--------------");
         office.showInfo();

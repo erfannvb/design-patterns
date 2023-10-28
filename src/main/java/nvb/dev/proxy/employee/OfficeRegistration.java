@@ -1,17 +1,28 @@
 package nvb.dev.proxy.employee;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class OfficeRegistration implements Office {
 
     private final Employee employee;
+    private final List<Employee> employeeList;
 
     public OfficeRegistration(Employee employee) {
         this.employee = employee;
+        this.employeeList = new ArrayList<>();
     }
 
     @Override
-    public void register() {
-        System.out.println("New Employee Registered : " + employee.getFirstName() +
-                " " + employee.getLastName());
+    public List<Employee> addEmployee(Employee newEmployee) {
+        newEmployee = new Employee.Builder(employee.getAge(), employee.isEmployed())
+                .setFirstName(employee.getFirstName())
+                .setLastName(employee.getLastName())
+                .setDepartment(employee.getDepartment())
+                .setHireDate(employee.getHireDate())
+                .setSalary(employee.getSalary()).build();
+        employeeList.add(newEmployee);
+        return employeeList;
     }
 
     @Override
@@ -26,12 +37,14 @@ public class OfficeRegistration implements Office {
 
     @Override
     public void showInfo() {
-        System.out.println("First Name : " + employee.getFirstName());
-        System.out.println("Last Name : " + employee.getLastName());
-        System.out.println("Age : " + employee.getAge());
-        System.out.println("Is Employed : " + employee.isEmployed());
-        System.out.println("Department : " + employee.getDepartment());
-        System.out.println("Hire Date : " + employee.getHireDate());
-        System.out.println("Salary : " + employee.getSalary());
+        for (Employee emp : employeeList) {
+            System.out.println("First Name : " + emp.getFirstName());
+            System.out.println("Last Name : " + emp.getLastName());
+            System.out.println("Age : " + emp.getAge());
+            System.out.println("Is Employed : " + emp.isEmployed());
+            System.out.println("Department : " + emp.getDepartment());
+            System.out.println("Hire Date : " + emp.getHireDate());
+            System.out.println("Salary : " + emp.getSalary());
+        }
     }
 }
