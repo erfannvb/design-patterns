@@ -2,37 +2,29 @@ package nvb.dev.proxy.employee;
 
 public class ProxyOfficeRegistration implements Office {
 
-    private String employeeFirstName;
-    private String employeeLastName;
-    private int employeeAge;
-    private boolean isEmployed;
+    private final Employee employee;
 
     private OfficeRegistration officeRegistration;
 
-    public ProxyOfficeRegistration(String employeeFirstName, String employeeLastName,
-                                   int employeeAge, boolean isEmployed) {
-        this.employeeFirstName = employeeFirstName;
-        this.employeeLastName = employeeLastName;
-        this.employeeAge = employeeAge;
-        this.isEmployed = isEmployed;
+    public ProxyOfficeRegistration(Employee employee) {
+        this.employee = employee;
     }
 
     @Override
     public void register() {
         if (checkEmployeeIsEmployeeOrNot() && checkEmployeeAge()) {
-            officeRegistration = new OfficeRegistration(employeeFirstName, employeeLastName,
-                    employeeAge, isEmployed);
+            officeRegistration = new OfficeRegistration(employee);
             officeRegistration.register();
         } else {
-            System.out.println("This employee does not have the required qualification to be hired.");
+            System.out.println("This employee does not have the required qualifications to get hired.");
         }
     }
 
     private boolean checkEmployeeIsEmployeeOrNot() {
-        return isEmployed;
+        return employee.isEmployed();
     }
 
     private boolean checkEmployeeAge() {
-        return employeeAge >= 18;
+        return employee.getAge() >= 18;
     }
 }
