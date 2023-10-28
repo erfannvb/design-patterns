@@ -4,4 +4,10 @@ public interface Office {
 
     void register();
 
+    String getFirstName();
+
+    String getDepartment();
+
+    void showInfo();
+
 }
