@@ -27,13 +27,13 @@ public class ProxyOfficeRegistration implements Office {
 
     @Override
     public String getFirstName() {
-        if (validate() && officeRegistration.getFirstName() != null) return employee.getFirstName();
+        if (validate() && officeRegistration.getFirstName() != null) return officeRegistration.getFirstName();
         return "First Name Not Found!";
     }
 
     @Override
     public String getDepartment() {
-        if (validate() && officeRegistration.getDepartment() != null) return employee.getDepartment();
+        if (validate() && officeRegistration.getDepartment() != null) return officeRegistration.getDepartment();
         return "Department Not Found";
     }
 
@@ -47,10 +47,10 @@ public class ProxyOfficeRegistration implements Office {
     }
 
     private boolean validate() {
-        return checkEmployeeIsEmployeeOrNot() && checkEmployeeAge();
+        return checkEmployeeIsEmployedOrNot() && checkEmployeeAge();
     }
 
-    private boolean checkEmployeeIsEmployeeOrNot() {
+    private boolean checkEmployeeIsEmployedOrNot() {
         return !employee.isEmployed();
     }
 
